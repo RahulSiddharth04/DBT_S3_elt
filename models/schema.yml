@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: src_genome_score
+    description: "Source model for genome scores"
+    columns:
+      - name: movie_id
+        description: "Movie identifier"
+        tests:
+          - not_null
+      - name: tag_id
+        description: "Tag identifier"
+        tests:
+          - not_null
+      - name: relevance
+        description: "Relevance score for the tag"
+        tests:
+          - not_null
+          
+  - name: src_genome_tags
+    description: "Source model for genome tags"
+    columns:
+      - name: tag_id
+        description: "Tag identifier"
+        tests:
+          - not_null
+          - unique
+      - name: tag
+        description: "Tag text"
+        tests:
+          - not_null
+
+  - name: src_links
+    description: "Source model for links between movies and external databases"
+    columns:
+      - name: movie_id
+        description: "Movie identifier"
+        tests:
+          - not_null
+      - name: imdb_id
+        description: "IMDB identifier"
+        tests:
+          - not_null
+      - name: tmdb_id
+        description: "TMDB identifier"
+
+  - name: src_rating
+    description: "Source model for ratings"
+    columns:
+      - name: user_id
+        description: "User identifier"
+        tests:
+          - not_null
+      - name: movie_id
+        description: "Movie identifier"
+        tests:
+          - not_null
+      - name: rating
+        description: "Numeric rating value"
+        tests:
+          - not_null
+      - name: rating_timestamp
+        description: "Timestamp when rating was made"
+        tests:
+          - not_null
